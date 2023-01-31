@@ -17,8 +17,7 @@ Rectangle {
     height: 600
     color: "#383636"
     border.color: "#909090"
-
-
+    property bool isDialogOpen: false
 
     Text {
         id: text1
@@ -48,9 +47,12 @@ Rectangle {
         anchors.rightMargin: 10
         anchors.leftMargin: 10
         anchors.bottomMargin: 10
+
+        Connections {
+            target: addTODO_button
+            onClicked: rectangle.isDialogOpen = !rectangle.isDialogOpen
+        }
     }
-
-
 
     Rectangle {
         id: addTODO_dialog
@@ -58,6 +60,7 @@ Rectangle {
         y: 382
         width: 380
         height: 149
+        visible: rectangle.isDialogOpen
         color: "#9be0e0e0"
         radius: 30
 
@@ -83,6 +86,11 @@ Rectangle {
                 id: cancel_button
                 text: qsTr("Cancel")
                 Layout.fillWidth: true
+
+                Connections {
+                    target: cancel_button
+                    onClicked: rectangle.isDialogOpen = false
+                }
             }
 
             Button {
@@ -91,11 +99,14 @@ Rectangle {
                 highlighted: false
                 icon.color: "#cf606368"
                 Layout.fillWidth: true
+
+                Connections {
+                    target: add_button
+                    onClicked: rectangle.isDialogOpen = false
+                }
             }
         }
     }
-
-
 
     Rectangle {
         id: todo_item
