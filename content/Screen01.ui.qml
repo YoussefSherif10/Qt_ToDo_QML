@@ -14,9 +14,28 @@ import QtQuick.Layouts 1.0
 Rectangle {
     id: rectangle
     width: Constants.width
-    height: 500
-    color: "#5a5858"
+    height: 600
+    color: "#383636"
+    border.color: "#909090"
 
+
+
+    Text {
+        id: text1
+        color: "#0e708f"
+        text: qsTr("ToDo")
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        font.pixelSize: 30
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        font.italic: true
+        font.bold: true
+        anchors.rightMargin: 10
+        anchors.leftMargin: 10
+        anchors.topMargin: 10
+    }
 
     Button {
         id: addTODO_button
@@ -31,10 +50,12 @@ Rectangle {
         anchors.bottomMargin: 10
     }
 
+
+
     Rectangle {
         id: addTODO_dialog
         x: 10
-        y: 289
+        y: 382
         width: 380
         height: 149
         color: "#9be0e0e0"
@@ -49,7 +70,7 @@ Rectangle {
             anchors.rightMargin: 25
             anchors.leftMargin: 25
             anchors.topMargin: 25
-            placeholderText: qsTr("TODO")
+            placeholderText: qsTr("New item")
         }
 
         RowLayout {
@@ -73,6 +94,33 @@ Rectangle {
             }
         }
     }
+
+
+
+    Rectangle {
+        id: todo_item
+        x: 9
+        y: 63
+        width: 382
+        height: 62
+        color: "#ababab"
+        radius: 10
+
+        CheckBox {
+            id: checkBox
+            text: qsTr("Check Box")
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: parent.top
+            anchors.bottom: parent.bottom
+            font.pointSize: 20
+            anchors.bottomMargin: 7
+            anchors.rightMargin: 5
+            anchors.leftMargin: 5
+            anchors.topMargin: 7
+        }
+    }
+
     states: [
         State {
             name: "clicked"
