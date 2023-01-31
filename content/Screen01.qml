@@ -91,6 +91,11 @@ Rectangle {
                     target: cancel_button
                     onClicked: rectangle.isDialogOpen = false
                 }
+
+                Connections {
+                    target: cancel_button
+                    onClicked: rodo_textInput.text = ""
+                }
             }
 
             Button {
@@ -104,31 +109,64 @@ Rectangle {
                     target: add_button
                     onClicked: rectangle.isDialogOpen = false
                 }
+
+                Connections {
+                    target: add_button
+                    onClicked: myListModel.append(myListModel.createListElement())
+                }
             }
         }
     }
 
-    Rectangle {
-        id: todo_item
-        x: 9
-        y: 63
-        width: 382
-        height: 62
-        color: "#ababab"
-        radius: 10
+    Column {
+        id: column
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+        anchors.rightMargin: 10
+        anchors.leftMargin: 10
+        anchors.bottomMargin: 100
+        anchors.topMargin: 50
 
-        CheckBox {
-            id: checkBox
-            text: qsTr("Check Box")
-            anchors.left: parent.left
-            anchors.right: parent.right
-            anchors.top: parent.top
-            anchors.bottom: parent.bottom
-            font.pointSize: 20
-            anchors.bottomMargin: 7
-            anchors.rightMargin: 5
-            anchors.leftMargin: 5
-            anchors.topMargin: 7
+        Repeater {
+            id: repeater
+            anchors.fill: parent
+            model: ListModel {
+                id: myListModel
+                ListElement {
+                    name: "my to do"
+                }
+                function createListElement(){
+                    return {
+                        "name": rodo_textInput.text
+                    }
+                }
+            }
+
+            Rectangle {
+                id: todo_item
+                x: -1
+                y: 13
+                width: 382
+                height: 62
+                color: "#ababab"
+                radius: 10
+
+                CheckBox {
+                    id: checkBox
+                    text: name
+                    anchors.left: parent.left
+                    anchors.right: parent.right
+                    anchors.top: parent.top
+                    anchors.bottom: parent.bottom
+                    font.pointSize: 20
+                    anchors.bottomMargin: 7
+                    anchors.rightMargin: 5
+                    anchors.leftMargin: 5
+                    anchors.topMargin: 7
+                }
+            }
         }
     }
 
