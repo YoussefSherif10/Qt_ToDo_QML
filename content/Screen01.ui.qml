@@ -15,8 +15,8 @@ Rectangle {
     id: rectangle
     width: Constants.width
     height: 500
+    color: "#5a5858"
 
-    color: Constants.backgroundColor
 
     Button {
         id: addTODO_button
@@ -25,6 +25,7 @@ Rectangle {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
+        icon.color: "#d4d4d4"
         anchors.rightMargin: 10
         anchors.leftMargin: 10
         anchors.bottomMargin: 10
@@ -36,7 +37,7 @@ Rectangle {
         y: 289
         width: 380
         height: 149
-        color: "#e0e0e0"
+        color: "#9be0e0e0"
         radius: 30
 
         TextField {
@@ -52,9 +53,9 @@ Rectangle {
         }
 
         RowLayout {
-            x: 14
-            y: 101
-            width: 349
+            x: 25
+            y: 93
+            width: 330
             height: 40
             spacing: 50
             Button {
