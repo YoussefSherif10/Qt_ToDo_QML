@@ -9,6 +9,7 @@ Check out https://doc.qt.io/qtcreator/creator-quick-ui-forms.html for details on
 import QtQuick 6.2
 import QtQuick.Controls 6.2
 import ToDo
+import QtQuick.Layouts 1.0
 
 Rectangle {
     id: rectangle
@@ -28,10 +29,53 @@ Rectangle {
         anchors.leftMargin: 10
         anchors.bottomMargin: 10
     }
+
+    Rectangle {
+        id: addTODO_dialog
+        x: 10
+        y: 289
+        width: 380
+        height: 149
+        color: "#e0e0e0"
+        radius: 30
+
+        TextField {
+            id: rodo_textInput
+            anchors.left: parent.left
+            anchors.right: parent.right
+            anchors.top: parent.top
+            placeholderTextColor: "#f1353637"
+            anchors.rightMargin: 25
+            anchors.leftMargin: 25
+            anchors.topMargin: 25
+            placeholderText: qsTr("TODO")
+        }
+
+        RowLayout {
+            x: 14
+            y: 101
+            width: 349
+            height: 40
+            spacing: 50
+            Button {
+                id: cancel_button
+                text: qsTr("Cancel")
+                Layout.fillWidth: true
+            }
+
+            Button {
+                id: add_button
+                text: qsTr("Add")
+                highlighted: false
+                icon.color: "#cf606368"
+                Layout.fillWidth: true
+            }
+        }
+    }
     states: [
         State {
             name: "clicked"
-            when: button.checked
+            when: cancel_button.checked
         }
     ]
 }
